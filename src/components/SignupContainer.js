@@ -82,6 +82,7 @@ class SignupContainer extends Component {
             multiple
             selection
             allowAdditions
+            closeOnChange
             onAddItem={this.handleAddition}
             options={options}
           />
