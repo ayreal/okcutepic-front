@@ -1,43 +1,21 @@
 import React, { Component } from "react";
 import { Button, Checkbox, Form, Card, Dropdown } from "semantic-ui-react";
-// import { Interests } from "./const.js";
+import { INTERESTS } from "./interests.js";
 
-const INTERESTS = [
-  {
-    id: 1,
-    name: "football",
-    created_at: "2017-11-30T19:50:24.200Z",
-    updated_at: "2017-11-30T19:50:24.200Z"
-  },
-  {
-    id: 2,
-    name: "drinking",
-    created_at: "2017-11-30T19:50:24.209Z",
-    updated_at: "2017-11-30T19:50:24.209Z"
-  },
-  {
-    id: 3,
-    name: "social activism",
-    created_at: "2017-11-30T19:50:24.216Z",
-    updated_at: "2017-11-30T19:50:24.216Z"
-  },
-  {
-    id: 4,
-    name: "film making",
-    created_at: "2017-11-30T19:50:24.225Z",
-    updated_at: "2017-11-30T19:50:24.225Z"
-  }
-];
+const options = INTERESTS.map(interest => {
+  var obj = {};
+  obj.key = interest.name;
+  obj.text = interest.name;
+  obj.value = interest.name;
+  return obj;
+});
+console.log(options);
 
 class SignupContainer extends Component {
-  rebuildInterests() {
-    return INTERESTS.map(interest => {
-      const newObj = {};
-      newObj.key = interest.name;
-      newObj.name = interest.name;
-      newObj.value = interest.name;
-    });
+  handleAddition() {
+    console.log("here");
   }
+
   render() {
     return (
       <Card>
@@ -63,6 +41,14 @@ class SignupContainer extends Component {
               label="Bio"
               placeholder="Tell us more about you..."
             />
+          </Form.Field>
+          <Form.Field>
+            <label>Location</label>
+            <input placeholder="Location" />
+          </Form.Field>
+          <Form.Field>
+            <label>Photo URL</label>
+            <input placeholder="Photo" />
           </Form.Field>
           <label>I am a..</label>
           <Dropdown
@@ -90,11 +76,14 @@ class SignupContainer extends Component {
           <Form.Group />
 
           <Dropdown
-            placeholder="Skills"
+            placeholder="Interests"
             fluid
+            search
             multiple
             selection
-            options={this.rebuildInterests()}
+            allowAdditions
+            onAddItem={this.handleAddition}
+            options={options}
           />
 
           <Button type="submit">Submit</Button>

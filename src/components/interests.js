@@ -1,5 +1,4 @@
-import React from "react";
-const Interests = [
+export const INTERESTS = [
   {
     id: 1,
     name: "football",
@@ -115,5 +114,3 @@ const Interests = [
     updated_at: "2017-11-30T19:50:24.320Z"
   }
 ];
-
-export default Interests;
