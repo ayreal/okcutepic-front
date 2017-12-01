@@ -1,11 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-const SearchContainer = props => (
-  <div>
-    <h2>SearchContainer</h2>
-  </div>
-);
+class SearchContainer extends Component {
+  render() {
+    console.log(this.props.users);
+    return (
+      <div>
+        <h2>SearchContainer</h2>
+      </div>
+    );
+  }
+}
 
 SearchContainer.propTypes = {
   users: PropTypes.array.isRequired

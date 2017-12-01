@@ -1,17 +1,5 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Segment,
-  Visibility
-} from "semantic-ui-react";
+import { Visibility } from "semantic-ui-react";
 import FixedMenu from "./FixedMenu";
 
 class AppHeader extends Component {
