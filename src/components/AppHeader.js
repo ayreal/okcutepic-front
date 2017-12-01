@@ -14,7 +14,7 @@ class AppHeader extends Component {
     return (
       <div>
         {visible ? <FixedMenu /> : null}
-
+        
         <Visibility
           onBottomPassed={this.showFixedMenu}
           onBottomVisible={this.hideFixedMenu}
