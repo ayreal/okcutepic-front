@@ -10,17 +10,17 @@ import {
 import { INTERESTS } from "./interests.js";
 
 const options = INTERESTS.map(interest => {
-  var obj = {};
+  var obj = { ...interest };
   obj.key = interest.name;
   obj.text = interest.name;
-  obj.value = interest.name;
+  obj.value = interest;
   return obj;
 });
 
 const genderOptions = [
-  { value: "Man", text: "Man" },
-  { text: "Woman", value: "Woman" },
-  { text: "Other", value: "Other" }
+  { value: 0, text: "Male" },
+  { text: "Female", value: 1 },
+  { text: "Other", value: 2 }
 ];
 
 class SignupContainer extends Component {
@@ -83,9 +83,9 @@ class SignupContainer extends Component {
             fluid
             selection
             options={[
-              { text: "Men", value: "Men" },
-              { text: "Women", value: "Women" },
-              { text: "Any", value: "Any" }
+              { text: "Men", value: 0 },
+              { text: "Women", value: 1 },
+              { text: "Any", value: 2 }
             ]}
           />
 

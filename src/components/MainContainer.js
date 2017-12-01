@@ -40,6 +40,7 @@ class MainContainer extends Component {
       ...this.state,
       newUser: { ...this.state.newUser, [name]: value }
     });
+    console.log(this.state);
   };
 
   signUpSubmit = () => {
@@ -48,12 +49,10 @@ class MainContainer extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accepts: "application/json"
+        Accept: "application/json"
       },
       body: JSON.stringify(body)
-    })
-      .then(res => res.json())
-      .then(json => console.log(json));
+    }).then(res => console.log(res));
   };
 
   render() {
