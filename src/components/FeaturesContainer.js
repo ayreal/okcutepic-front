@@ -4,13 +4,14 @@ import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
 import { USERS } from "./users.js";
+import { INTERESTS } from "./interests.js";
 
 const panes = [
   {
     menuItem: "Search",
     render: () => (
       <Tab.Pane>
-        <SearchContainer users={USERS} />
+        <SearchContainer users={USERS} interests={INTERESTS} />
       </Tab.Pane>
     )
   },
@@ -32,6 +33,6 @@ const panes = [
   }
 ];
 
-const FeaturesContainer = () => <Tab panes={panes} />;
+const FeaturesContainer = () => <Tab panes={panes} renderActiveOnly />;
 
 export default FeaturesContainer;

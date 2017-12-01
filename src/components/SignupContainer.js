@@ -9,7 +9,6 @@ const options = INTERESTS.map(interest => {
   obj.value = interest.name;
   return obj;
 });
-console.log(options);
 
 class SignupContainer extends Component {
   handleAddition() {
