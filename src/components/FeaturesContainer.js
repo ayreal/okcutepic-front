@@ -22,7 +22,7 @@ const panes = [
     )
   },
   {
-    menuItem: "Marches",
+    menuItem: "Matches",
     render: () => (
       <Tab.Pane>
         <MatchesContainer />
