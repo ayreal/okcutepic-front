@@ -13,7 +13,22 @@ export const USERS = [
     password_digest:
       "$2a$10$uqMVYyxWVA5nIKiukWsKg./mhlvY.iCd.qweHHPJoIhJh6Bj6tKgu",
     created_at: "2017-11-30T20:16:08.825Z",
-    updated_at: "2017-12-01T03:20:15.395Z"
+    updated_at: "2017-12-01T03:20:15.395Z",
+    interests: [
+      {
+        id: 5,
+        name: "kite surfing",
+        created_at: "2017-11-30T19:50:24.231Z",
+        updated_at: "2017-11-30T19:50:24.231Z"
+      },
+      {
+        id: 6,
+        name: "rollerblading",
+        created_at: "2017-11-30T19:50:24.237Z",
+        updated_at: "2017-11-30T19:50:24.237Z"
+      }
+    ],
+    matches: []
   },
   {
     id: 2,
@@ -29,6 +44,8 @@ export const USERS = [
     password_digest:
       "$2a$10$q2OrSFcz.4uyGoP/DO2YFuhvReZfkWPBnWx17xw8fuxCJz4931RTm",
     created_at: "2017-11-30T20:17:27.266Z",
-    updated_at: "2017-12-01T03:22:13.369Z"
+    updated_at: "2017-12-01T03:22:13.369Z",
+    interests: [],
+    matches: []
   }
 ];
