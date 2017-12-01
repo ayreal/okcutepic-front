@@ -13,7 +13,6 @@ class App extends Component {
     };
   }
 
-  login = data => {};
   render() {
     return (
       <div className="App">

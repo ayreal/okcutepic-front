@@ -3,13 +3,14 @@ import { Tab } from "semantic-ui-react";
 import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
+import { USERS } from "./users.js";
 
 const panes = [
   {
     menuItem: "Search",
     render: () => (
       <Tab.Pane>
-        <SearchContainer />
+        <SearchContainer users={USERS} />
       </Tab.Pane>
     )
   },
@@ -17,7 +18,7 @@ const panes = [
     menuItem: "Swipe",
     render: () => (
       <Tab.Pane>
-        <SwipeContainer />
+        <SwipeContainer users={USERS} />
       </Tab.Pane>
     )
   },
@@ -25,7 +26,7 @@ const panes = [
     menuItem: "Matches",
     render: () => (
       <Tab.Pane>
-        <MatchesContainer />
+        <MatchesContainer users={USERS} />
       </Tab.Pane>
     )
   }
