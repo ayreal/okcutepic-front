@@ -5,11 +5,15 @@ import PersonInterestsCard from "./PersonInterestsCard";
 import SearchFilter from "./SearchFilter";
 
 class SearchContainer extends Component {
+  state = {
+    isMatchOnly: false
+  };
   cards = () => {
     return this.props.users.map(user => {
       return <PersonInterestsCard key={user.id} data={user} />;
     });
   };
+
   render() {
     console.log(this.props.users);
     return (

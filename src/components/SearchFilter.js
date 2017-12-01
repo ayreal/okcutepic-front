@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import { Form, Card, Dropdown, Button } from "semantic-ui-react";
+import { Form, Card, Dropdown, Button, Checkbox } from "semantic-ui-react";
 
 let options = [];
 class SearchFilter extends Component {
+  state = {};
   makeInterestOptions = () => {
     options = this.props.interests.map(interest => {
       var obj = {};
-      obj.key = interest.name;
+      obj.key = interest.id;
       obj.text = interest.name;
       obj.value = interest.name;
       return obj;
     });
-    console.log("options is", options);
+  };
+
+  handleSearchChange = event => {
+    debugger;
   };
 
   render() {
@@ -25,10 +29,14 @@ class SearchFilter extends Component {
             search
             multiple
             selection
+            onChange={this.handleSearchChange}
             closeOnChange
             options={options}
           />
-
+          <Checkbox
+            label="Shared Interests Only"
+            onClick={this.handleCheckbox}
+          />
           <Button type="submit">Submit</Button>
         </Form>
       </Card>
