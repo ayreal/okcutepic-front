@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppHeader from "./components/AppHeader";
 import LoginContainer from "./components/LoginContainer";
 import SignupContainer from "./components/SignupContainer";
 import MainContainer from "./components/MainContainer";
@@ -14,11 +13,9 @@ class App extends Component {
     };
   }
 
-  login = data => {};
   render() {
     return (
       <div className="App">
-        <AppHeader />
         <LoginContainer />
         <SignupContainer />
         <MainContainer />
