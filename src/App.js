@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AppHeader from "./components/AppHeader";
 import LoginContainer from "./components/LoginContainer";
 import SignupContainer from "./components/SignupContainer";
+import MainContainer from "./components/MainContainer";
 import "./App.css";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
         <AppHeader />
         <LoginContainer />
         <SignupContainer />
+        <MainContainer />
       </div>
     );
   }
