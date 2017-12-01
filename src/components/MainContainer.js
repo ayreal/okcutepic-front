@@ -12,10 +12,17 @@ import {
   Segment,
   Visibility
 } from "semantic-ui-react";
+import AppHeader from "./AppHeader";
+import FeaturesContainer from "./FeaturesContainer";
 
 class MainContainer extends Component {
   render() {
-    return <div>MainContainer</div>;
+    return (
+      <div>
+        <AppHeader />
+        <FeaturesContainer />
+      </div>
+    );
   }
 }
 
