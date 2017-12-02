@@ -9,9 +9,15 @@ const extra = (
   </a>
 );
 
-// replace the below with props
 const PersonPhotoCard = props => {
   console.log(props);
+
+  function handleLikeUser() {
+    props.handleLike(props.data);
+  }
+
+  // clicking a heart will send a post request to create a like --> this comes down from params of the USER
+  // clicking a thumb will call setCurrentPerson from the SwipeContainer
   return (
     <Card>
       <Image src={props.data.photo} />
@@ -25,11 +31,11 @@ const PersonPhotoCard = props => {
           <Icon
             name="thumbs down huge"
             circular="true"
-            onClick={this.handleClick}
+            onClick={props.nextPerson}
           />
         </a>
         <a>
-          <Icon name="heart huge" circular="true" />
+          <Icon name="heart huge" circular="true" onClick={handleLikeUser} />
         </a>
       </Card.Content>
     </Card>
@@ -37,7 +43,9 @@ const PersonPhotoCard = props => {
 };
 
 PersonPhotoCard.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  handleLike: PropTypes.func.isRequired,
+  nextPerson: PropTypes.func.isRequired
 };
 
 export default PersonPhotoCard;

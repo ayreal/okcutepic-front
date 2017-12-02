@@ -11,6 +11,11 @@ const genderFilteredUsers = () => {
   return USERS.filter(user => user.gender === USER.gender_choice);
 };
 
+const handleLike = data => {
+  // make a post with that user's data to the backend to create a like
+  debugger;
+};
+
 const panes = [
   {
     menuItem: "Search",
@@ -28,7 +33,11 @@ const panes = [
     menuItem: "Swipe",
     render: () => (
       <Tab.Pane>
-        <SwipeContainer user={USER} users={genderFilteredUsers()} />
+        <SwipeContainer
+          user={USER}
+          users={genderFilteredUsers()}
+          handleLike={handleLike}
+        />
       </Tab.Pane>
     )
   },
