@@ -7,12 +7,20 @@ import { USERS } from "./users.js";
 import { USER } from "./user.js";
 import { INTERESTS } from "./interests.js";
 
+const genderFilteredUsers = () => {
+  return USERS.filter(user => user.gender === USER.gender_choice);
+};
+
 const panes = [
   {
     menuItem: "Search",
     render: () => (
       <Tab.Pane>
-        <SearchContainer user={USER} users={USERS} interests={INTERESTS} />
+        <SearchContainer
+          user={USER}
+          users={genderFilteredUsers()}
+          interests={INTERESTS}
+        />
       </Tab.Pane>
     )
   },
@@ -20,7 +28,7 @@ const panes = [
     menuItem: "Swipe",
     render: () => (
       <Tab.Pane>
-        <SwipeContainer user={USER} users={USERS} />
+        <SwipeContainer user={USER} users={genderFilteredUsers()} />
       </Tab.Pane>
     )
   },
