@@ -4,14 +4,28 @@ import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
 import { USERS } from "./users.js";
+import { USER } from "./user.js";
 import { INTERESTS } from "./interests.js";
+
+const genderFilteredUsers = () => {
+  return USERS.filter(user => user.gender === USER.gender_choice);
+};
+
+const handleLike = data => {
+  // make a post with that user's data to the backend to create a like
+  debugger;
+};
 
 const panes = [
   {
     menuItem: "Search",
     render: () => (
       <Tab.Pane>
-        <SearchContainer users={USERS} interests={INTERESTS} />
+        <SearchContainer
+          user={USER}
+          users={genderFilteredUsers()}
+          interests={INTERESTS}
+        />
       </Tab.Pane>
     )
   },
@@ -19,7 +33,11 @@ const panes = [
     menuItem: "Swipe",
     render: () => (
       <Tab.Pane>
-        <SwipeContainer users={USERS} />
+        <SwipeContainer
+          user={USER}
+          users={genderFilteredUsers()}
+          handleLike={handleLike}
+        />
       </Tab.Pane>
     )
   },
@@ -27,7 +45,7 @@ const panes = [
     menuItem: "Matches",
     render: () => (
       <Tab.Pane>
-        <MatchesContainer users={USERS} />
+        <MatchesContainer user={USER} users={USERS} />
       </Tab.Pane>
     )
   }
