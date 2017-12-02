@@ -14,11 +14,25 @@ class SwipeContainer extends Component {
   componentDidMount() {
     this.setCurrentPerson();
   }
-  setCurrentPerson() {
+
+  getRandomPerson() {
     const users = this.props.users;
-    const user = users[Math.floor(Math.random() * users.length)];
+    const user = this.props.user;
+    let person = users[Math.floor(Math.random() * users.length)];
+    // user can not get themself as a match
+    while (person.id === user.id) {
+      person = users[Math.floor(Math.random() * users.length)];
+      if (person.id !== user.id) {
+        break;
+      }
+    }
+    return person;
+  }
+
+  setCurrentPerson() {
+    const person = this.getRandomPerson();
     this.setState({
-      currentPerson: user
+      currentPerson: person
     });
   }
 
@@ -34,7 +48,7 @@ class SwipeContainer extends Component {
 }
 
 SwipeContainer.propTypes = {
-  //user: PropTypes.object.isRequired, // need user passed down to see only users of the gender they like
+  user: PropTypes.object.isRequired, // need user passed down to see only users of the gender they like
   users: PropTypes.array.isRequired
 };
 export default SwipeContainer;

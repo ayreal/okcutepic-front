@@ -13,6 +13,25 @@ export const USER = {
     "$2a$10$q2OrSFcz.4uyGoP/DO2YFuhvReZfkWPBnWx17xw8fuxCJz4931RTm",
   created_at: "2017-11-30T20:17:27.266Z",
   updated_at: "2017-12-01T03:22:13.369Z",
-  interests: [],
+  interests: [
+    {
+      id: 6,
+      name: "rollerblading",
+      created_at: "2017-11-30T19:50:24.237Z",
+      updated_at: "2017-11-30T19:50:24.237Z"
+    },
+    {
+      id: 8,
+      name: "music",
+      created_at: "2017-11-30T19:50:24.249Z",
+      updated_at: "2017-11-30T19:50:24.249Z"
+    },
+    {
+      id: 9,
+      name: "interperative dance",
+      created_at: "2017-11-30T19:50:24.255Z",
+      updated_at: "2017-11-30T19:50:24.255Z"
+    }
+  ],
   matches: []
 };

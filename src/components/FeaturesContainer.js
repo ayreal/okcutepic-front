@@ -4,6 +4,7 @@ import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
 import { USERS } from "./users.js";
+import { USER } from "./user.js";
 import { INTERESTS } from "./interests.js";
 
 const panes = [
@@ -11,7 +12,7 @@ const panes = [
     menuItem: "Search",
     render: () => (
       <Tab.Pane>
-        <SearchContainer users={USERS} interests={INTERESTS} />
+        <SearchContainer user={USER} users={USERS} interests={INTERESTS} />
       </Tab.Pane>
     )
   },
@@ -19,7 +20,7 @@ const panes = [
     menuItem: "Swipe",
     render: () => (
       <Tab.Pane>
-        <SwipeContainer users={USERS} />
+        <SwipeContainer user={USER} users={USERS} />
       </Tab.Pane>
     )
   },
@@ -27,7 +28,7 @@ const panes = [
     menuItem: "Matches",
     render: () => (
       <Tab.Pane>
-        <MatchesContainer users={USERS} />
+        <MatchesContainer user={USER} users={USERS} />
       </Tab.Pane>
     )
   }

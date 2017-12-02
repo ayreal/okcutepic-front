@@ -27,6 +27,7 @@ class SearchContainer extends Component {
 }
 
 SearchContainer.propTypes = {
+  user: PropTypes.object.isRequired,
   users: PropTypes.array.isRequired,
   interests: PropTypes.array.isRequired
 };
