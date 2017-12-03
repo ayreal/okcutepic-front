@@ -1,17 +1,15 @@
-const ROUTE = "https://okcutepic-back.herokuapp.com/api/v1/users";
+const ROUTE = "https://okcutepic-back.herokuapp.com/api/v1";
 
-const headers = {
-  Accepts: "application/json, text/plain",
-
-  "Content-Type": "application/json"
-};
+// const headers = {
+//   Accepts: "application/json, text/plain",
+//
+//   "Content-Type": "application/json"
+// };
 
 export function fetchUsers() {
-  return fetch(ROUTE).then(res => res.json());
+  return fetch(`${ROUTE}/users`).then(res => res.json());
 }
 
-// fetchUsers = () => {
-//   return fetch(
-//     `https://okcutepic-back.herokuapp.com/api/v1/users`
-//   ).then(res => res.json());
-// };
+export function fetchInterests() {
+  return fetch(`${ROUTE}/interests`).then(res => res.json());
+}
