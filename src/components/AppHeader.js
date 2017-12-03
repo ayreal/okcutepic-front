@@ -10,7 +10,9 @@ const AppHeader = props => (
       <Menu.Item as="h3">Welcome, {props.user.name}!</Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item>
-          <Button default>Logout</Button>
+          <Button default circular={true}>
+            Logout
+          </Button>
         </Menu.Item>
       </Menu.Menu>
     </Container>

@@ -26,9 +26,14 @@ const PersonInterestCard = props => {
         <Card.Description>{props.data.bio}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button circular={true} color="purple" size="large">
-          <Icon name="heart" size="large" /> Like
-        </Button>
+        <Button
+          content="Like"
+          icon="heart"
+          color="purple"
+          size="large"
+          circular={true}
+          labelPosition="left"
+        />
       </Card.Content>
     </Card>
   );

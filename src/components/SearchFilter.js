@@ -51,9 +51,11 @@ class SearchFilter extends Component {
             onChange={this.props.handleCheckbox}
             checked={this.props.isChecked}
           />
-          <Button type="submit" color="purple">
-            Submit
-          </Button>
+          <Card.Content extra>
+            <Button type="submit" color="purple" circular={true}>
+              Search
+            </Button>
+          </Card.Content>
         </Form>
       </Card>
     );
