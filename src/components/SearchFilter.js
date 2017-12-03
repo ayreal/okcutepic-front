@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Form, Card, Dropdown, Button, Checkbox } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import {
+  Form,
+  Card,
+  Dropdown,
+  Button,
+  Checkbox,
+  Header,
+  Icon
+} from "semantic-ui-react";
 
 let options = [];
 class SearchFilter extends Component {
@@ -22,14 +31,17 @@ class SearchFilter extends Component {
     this.makeInterestOptions();
     return (
       <Card>
-        <Form>
+        <Header as="h2">
+          <Icon name="search" />
+          <Header.Content>Search Users By Interest</Header.Content>
+        </Header>
+        <Form onChange={this.handleSearchChange}>
           <Dropdown
             placeholder="Interests"
             fluid
             search
             multiple
             selection
-            onChange={this.handleSearchChange}
             closeOnChange
             options={options}
           />
@@ -37,11 +49,18 @@ class SearchFilter extends Component {
             label="Shared Interests Only"
             onClick={this.handleCheckbox}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" color="purple">
+            Submit
+          </Button>
         </Form>
       </Card>
     );
   }
 }
+
+SearchFilter.propTypes = {
+  interests: PropTypes.array.isRequired,
+  handleInterestsFilter: PropTypes.func.isRequired
+};
 
 export default SearchFilter;

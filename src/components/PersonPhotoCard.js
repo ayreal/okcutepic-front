@@ -26,12 +26,17 @@ const PersonPhotoCard = props => {
         <a>
           <Icon
             name="thumbs down huge"
-            circular="true"
+            circular={true}
             onClick={props.nextPerson}
           />
         </a>
         <a>
-          <Icon name="heart huge" circular="true" onClick={handleLikeUser} />
+          <Icon
+            name="heart"
+            size="huge"
+            circular="true"
+            onClick={handleLikeUser}
+          />
         </a>
       </Card.Content>
     </Card>

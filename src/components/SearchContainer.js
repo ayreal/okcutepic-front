@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import PersonInterestsCard from "./PersonInterestsCard";
 import SearchFilter from "./SearchFilter";
 
 class SearchContainer extends Component {
   state = {
-    isMatchOnly: false
+    isMatchOnly: false,
+    filterOptions: []
   };
   cards = () => {
     return this.props.users.map(user => {
@@ -25,7 +26,10 @@ class SearchContainer extends Component {
     return (
       <div>
         <h2>Search</h2>
-        <SearchFilter interests={this.props.interests} />
+        <SearchFilter
+          interests={this.props.interests}
+          handleInterestsFilter={this.handleInterestsFilter}
+        />
         <Card.Group>{this.cards()}</Card.Group>
       </div>
     );
@@ -35,7 +39,8 @@ class SearchContainer extends Component {
 SearchContainer.propTypes = {
   user: PropTypes.object.isRequired,
   users: PropTypes.array.isRequired,
-  interests: PropTypes.array.isRequired
+  interests: PropTypes.array.isRequired,
+  getGenderIcon: PropTypes.func.isRequired
 };
 
 export default SearchContainer;
