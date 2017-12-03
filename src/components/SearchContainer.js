@@ -10,7 +10,13 @@ class SearchContainer extends Component {
   };
   cards = () => {
     return this.props.users.map(user => {
-      return <PersonInterestsCard key={user.id} data={user} />;
+      return (
+        <PersonInterestsCard
+          key={user.id}
+          data={user}
+          getGenderIcon={this.props.getGenderIcon}
+        />
+      );
     });
   };
 

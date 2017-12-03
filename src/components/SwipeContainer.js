@@ -26,10 +26,7 @@ class SwipeContainer extends Component {
   };
 
   setCurrentPerson = () => {
-    console.log("inside, this is", this);
-    console.log("inside, props are", this.props);
     const person = this.getRandomPerson();
-    console.log("inside, person is", person);
     this.setState({
       currentPerson: person
     });
@@ -44,6 +41,7 @@ class SwipeContainer extends Component {
           data={this.state.currentPerson}
           handleLike={this.props.handleLike}
           nextPerson={this.setCurrentPerson}
+          getGenderIcon={this.props.getGenderIcon}
         />
       </div>
     );

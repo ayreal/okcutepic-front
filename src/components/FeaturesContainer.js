@@ -16,6 +16,16 @@ const handleLike = data => {
   debugger;
 };
 
+const getGenderIcon = gender => {
+  if (gender === 1) {
+    return "man";
+  } else if (gender === 2) {
+    return "woman";
+  } else {
+    return "question";
+  }
+};
+
 const panes = [
   {
     menuItem: "Search",
@@ -25,6 +35,7 @@ const panes = [
           user={USER}
           users={genderFilteredUsers()}
           interests={INTERESTS}
+          getGenderIcon={getGenderIcon}
         />
       </Tab.Pane>
     )
@@ -37,6 +48,7 @@ const panes = [
           user={USER}
           users={genderFilteredUsers()}
           handleLike={handleLike}
+          getGenderIcon={getGenderIcon}
         />
       </Tab.Pane>
     )
@@ -45,7 +57,11 @@ const panes = [
     menuItem: "Matches",
     render: () => (
       <Tab.Pane>
-        <MatchesContainer user={USER} users={USERS} />
+        <MatchesContainer
+          user={USER}
+          users={USERS}
+          getGenderIcon={getGenderIcon}
+        />
       </Tab.Pane>
     )
   }
