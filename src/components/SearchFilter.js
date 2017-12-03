@@ -12,18 +12,18 @@ import {
 
 let options = [];
 class SearchFilter extends Component {
-  state = {};
   makeInterestOptions = () => {
     options = this.props.interests.map(interest => {
-      var obj = {};
-      obj.key = interest.id;
+      const obj = { ...interest };
+      obj.key = interest.name;
       obj.text = interest.name;
-      obj.value = interest.name;
+      obj.value = interest;
       return obj;
     });
   };
 
-  handleSearchChange = event => {
+  handleSubmit = event => {
+    event.preventDefault();
     debugger;
   };
 
@@ -35,7 +35,7 @@ class SearchFilter extends Component {
           <Icon name="search" />
           <Header.Content>Search Users By Interest</Header.Content>
         </Header>
-        <Form onChange={this.handleSearchChange}>
+        <Form onSubmit={this.handleSubmit}>
           <Dropdown
             placeholder="Interests"
             fluid
@@ -43,11 +43,13 @@ class SearchFilter extends Component {
             multiple
             selection
             closeOnChange
+            onChange={this.props.handleDropdown}
             options={options}
           />
           <Checkbox
             label="Shared Interests Only"
-            onClick={this.handleCheckbox}
+            onChange={this.props.handleCheckbox}
+            checked={this.props.isChecked}
           />
           <Button type="submit" color="purple">
             Submit
@@ -60,7 +62,9 @@ class SearchFilter extends Component {
 
 SearchFilter.propTypes = {
   interests: PropTypes.array.isRequired,
-  handleInterestsFilter: PropTypes.func.isRequired
+  handleDropdown: PropTypes.func.isRequired,
+  handleCheckbox: PropTypes.func.isRequired,
+  isChecked: PropTypes.bool.isRequired
 };
 
 export default SearchFilter;
