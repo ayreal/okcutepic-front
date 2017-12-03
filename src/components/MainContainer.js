@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AppHeader from "./AppHeader";
 import FeaturesContainer from "./FeaturesContainer";
 
 const USER = {
@@ -43,6 +44,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
+        <AppHeader user={USER} />
         <FeaturesContainer user={USER} />
       </div>
     );

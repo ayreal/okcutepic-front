@@ -1,27 +1,22 @@
-import React, { Component } from "react";
-import { Visibility } from "semantic-ui-react";
-import FixedMenu from "./FixedMenu";
+import React from "react";
+import { Container, Menu, Button } from "semantic-ui-react";
 
-class AppHeader extends Component {
-  state = { visible: true }; // remove hardcoding
+const AppHeader = props => (
+  <Menu fixed="top" color="purple" inverted>
+    <Container>
+      <Menu.Item as="h1" header>
+        OkCutepic
+      </Menu.Item>
+      <Menu.Item as="h3">Welcome, {props.user.name}!</Menu.Item>
+      <Menu.Menu position="right">
+        <Menu.Item>
+          <Button default circular={true}>
+            Logout
+          </Button>
+        </Menu.Item>
+      </Menu.Menu>
+    </Container>
+  </Menu>
+);
 
-  hideFixedMenu = () => this.setState({ visible: false });
-  showFixedMenu = () => this.setState({ visible: true });
-
-  render() {
-    const { visible } = this.state;
-
-    return (
-      <div>
-        {visible ? <FixedMenu /> : null}
-        
-        <Visibility
-          onBottomPassed={this.showFixedMenu}
-          onBottomVisible={this.hideFixedMenu}
-          once={false}
-        />
-      </div>
-    );
-  }
-}
 export default AppHeader;
