@@ -3,7 +3,7 @@ import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
 import { fetchUsers, fetchInterests } from "./Adapter";
-import { Tab } from "semantic-ui-react";
+import { Tab, Container } from "semantic-ui-react";
 // import { INTERESTS } from "./interests.js";
 
 // https://github.com/Semantic-Org/Semantic-UI-React/issues/1859
@@ -82,7 +82,11 @@ class FeaturesContainer extends Component {
       }
     ];
 
-    return <Tab panes={panes} renderActiveOnly />;
+    return (
+      <Container text style={{ marginTop: "7em" }}>
+        <Tab panes={panes} renderActiveOnly />
+      </Container>
+    );
   }
 }
 
