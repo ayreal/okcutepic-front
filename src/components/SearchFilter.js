@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { Form, Card, Dropdown, Button, Checkbox } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import {
+  Form,
+  Card,
+  Dropdown,
+  Button,
+  Checkbox,
+  Header,
+  Icon
+} from "semantic-ui-react";
 
 let options = [];
 class SearchFilter extends Component {
-  state = {};
   makeInterestOptions = () => {
     options = this.props.interests.map(interest => {
-      var obj = {};
-      obj.key = interest.id;
+      const obj = { ...interest };
+      obj.key = interest.name;
       obj.text = interest.name;
-      obj.value = interest.name;
+      obj.value = interest;
       return obj;
     });
   };
 
-  handleSearchChange = event => {
+  handleSubmit = event => {
+    event.preventDefault();
     debugger;
   };
 
@@ -22,26 +31,40 @@ class SearchFilter extends Component {
     this.makeInterestOptions();
     return (
       <Card>
-        <Form>
+        <Header as="h2">
+          <Icon name="search" />
+          <Header.Content>Search Users By Interest</Header.Content>
+        </Header>
+        <Form onSubmit={this.handleSubmit}>
           <Dropdown
             placeholder="Interests"
             fluid
             search
             multiple
             selection
-            onChange={this.handleSearchChange}
             closeOnChange
+            onChange={this.props.handleDropdown}
             options={options}
           />
           <Checkbox
             label="Shared Interests Only"
-            onClick={this.handleCheckbox}
+            onChange={this.props.handleCheckbox}
+            checked={this.props.isChecked}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" color="purple">
+            Submit
+          </Button>
         </Form>
       </Card>
     );
   }
 }
+
+SearchFilter.propTypes = {
+  interests: PropTypes.array.isRequired,
+  handleDropdown: PropTypes.func.isRequired,
+  handleCheckbox: PropTypes.func.isRequired,
+  isChecked: PropTypes.bool.isRequired
+};
 
 export default SearchFilter;

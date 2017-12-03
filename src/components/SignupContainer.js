@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Checkbox,
-  Form,
-  Card,
-  Dropdown,
-  Select
-} from "semantic-ui-react";
+import { Button, Form, Card, Select } from "semantic-ui-react";
 import { INTERESTS } from "./interests.js";
 
 const options = INTERESTS.map(interest => {
