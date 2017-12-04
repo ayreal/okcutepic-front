@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppHeader from "./AppHeader";
 import FeaturesContainer from "./FeaturesContainer";
+import SignupContainer from "./SignupContainer";
 
 const USER = {
   id: 2,
@@ -46,6 +47,7 @@ class MainContainer extends Component {
       <div>
         <AppHeader user={USER} />
         <FeaturesContainer user={USER} />
+        <SignupContainer />
       </div>
     );
   }
