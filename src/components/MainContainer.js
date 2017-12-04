@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import AppHeader from "./AppHeader";
 import FeaturesContainer from "./FeaturesContainer";
-import SignupContainer from "./SignupContainer";
 
 const USER = {
   id: 2,
