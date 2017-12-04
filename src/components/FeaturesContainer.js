@@ -4,7 +4,6 @@ import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
 import { fetchUsers, fetchInterests } from "./Adapter";
 import { Tab, Container } from "semantic-ui-react";
-// import { INTERESTS } from "./interests.js";
 
 // https://github.com/Semantic-Org/Semantic-UI-React/issues/1859
 
@@ -15,6 +14,7 @@ class FeaturesContainer extends Component {
   };
 
   componentDidMount() {
+    console.log("here");
     fetchUsers().then(res => this.setState({ users: res }));
     fetchInterests().then(res => this.setState({ interests: res }));
   }
@@ -41,6 +41,8 @@ class FeaturesContainer extends Component {
   };
 
   render() {
+    console.log("featurescontainer user is", this.props.user);
+
     const panes = [
       {
         menuItem: "Search",

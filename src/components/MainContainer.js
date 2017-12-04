@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppHeader from "./AppHeader";
 import FeaturesContainer from "./FeaturesContainer";
 
 class MainContainer extends Component {

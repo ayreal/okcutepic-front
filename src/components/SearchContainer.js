@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Card } from "semantic-ui-react";
 import PersonInterestsCard from "./PersonInterestsCard";
 import SearchFilter from "./SearchFilter";
-//import { fetchUsers } from "./Adapter";
 
 class SearchContainer extends Component {
   state = {

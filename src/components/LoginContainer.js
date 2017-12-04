@@ -10,16 +10,15 @@ import {
   Segment
 } from "semantic-ui-react";
 
-// remove hardcoding and add state to fields
 class LoginContainer extends Component {
   state = {
     error: false,
     fields: {
-      username: "user2",
-      password: "abc"
+      username: "",
+      password: ""
     }
   };
-  handleLogin = event => {
+  handleSubmit = event => {
     event.preventDefault();
     console.log("submitted");
     fetchUser(this.state.fields).then(user => {
@@ -27,11 +26,21 @@ class LoginContainer extends Component {
         this.setState({ error: true });
       } else {
         this.props.handleLogin(user);
+        this.props.history.push("/welcome");
       }
     });
   };
 
+  handleFormInput = event => {
+    const newFields = {
+      ...this.state.fields,
+      [event.target.name]: event.target.value
+    };
+    this.setState({ fields: newFields });
+  };
+
   render() {
+    // console.log("props in LoginContainer:", this.props);
     return (
       <div className="login-form">
         {/*
@@ -56,13 +65,16 @@ class LoginContainer extends Component {
               Log-in to your account
               {this.state.error ? <h3>Try again</h3> : null}
             </Header>
-            <Form size="large" onSubmit={this.handleLogin}>
+            <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
                 <Form.Input
                   fluid
                   icon="user"
                   iconPosition="left"
                   placeholder="Username"
+                  name="username"
+                  value={this.state.fields.username}
+                  onChange={this.handleFormInput}
                 />
                 <Form.Input
                   fluid
@@ -70,6 +82,9 @@ class LoginContainer extends Component {
                   iconPosition="left"
                   placeholder="Password"
                   type="password"
+                  name="password"
+                  value={this.state.fields.password}
+                  onChange={this.handleFormInput}
                 />
 
                 <Button
