@@ -6,13 +6,13 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment
 } from "semantic-ui-react";
 
 class LoginContainer extends Component {
   state = {
+    error: false,
     fields: {
       username: "user2",
       password: "abc"
@@ -21,8 +21,13 @@ class LoginContainer extends Component {
   handleLogin = event => {
     event.preventDefault();
     console.log("submitted");
-    console.log(this.state.fields);
-    fetchUser(this.state.fields);
+    fetchUser(this.state.fields).then(user => {
+      if (user.error) {
+        this.setState({ error: true });
+      } else {
+        this.props.handleLogin(user);
+      }
+    });
   };
 
   render() {
@@ -46,8 +51,9 @@ class LoginContainer extends Component {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as="h2" color="teal" textAlign="center">
-              <Image src="/logo.png" /> Log-in to your account
+            <Header as="h2" color="purple" textAlign="center">
+              Log-in to your account
+              {this.state.error ? <h3>Try again</h3> : null}
             </Header>
             <Form size="large" onSubmit={this.handleLogin}>
               <Segment stacked>
@@ -55,7 +61,7 @@ class LoginContainer extends Component {
                   fluid
                   icon="user"
                   iconPosition="left"
-                  placeholder="E-mail address"
+                  placeholder="Username"
                 />
                 <Form.Input
                   fluid
@@ -65,7 +71,13 @@ class LoginContainer extends Component {
                   type="password"
                 />
 
-                <Button type="submit" color="teal" fluid size="large">
+                <Button
+                  type="submit"
+                  color="purple"
+                  circular={true}
+                  fluid
+                  size="large"
+                >
                   Login
                 </Button>
               </Segment>
