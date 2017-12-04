@@ -17,6 +17,42 @@ const genderOptions = [
 ];
 
 class SignupContainer extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      newUser: {}
+    };
+  }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      newUser: { ...this.state.newUser, [name]: value }
+    });
+    console.log(this.state);
+  };
+
+  handleDropdown = (event, data) => {
+    const { name, value } = data;
+    this.setState({
+      newUser: { ...this.state.newUser, [name]: value }
+    });
+    console.log(this.state);
+  };
+
+  handleSubmit = () => {
+    const body = this.state.newUser;
+    fetch("http://localhost:3000/api/v1/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(body)
+    }).then(res => console.log(res));
+  };
+
   handleAddition() {
     console.log("here");
   }
@@ -24,10 +60,7 @@ class SignupContainer extends Component {
   render() {
     return (
       <Card>
-        <Form
-          onChange={this.props.handleChange}
-          onSubmit={this.props.handleSubmit}
-        >
+        <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Field>
               <label>Name</label>
@@ -61,7 +94,7 @@ class SignupContainer extends Component {
           </Form.Field>
 
           <Form.Field
-            onChange={this.props.handleDropdown}
+            onChange={this.handleDropdown}
             control={Select}
             label="Gender"
             name="gender"
@@ -70,7 +103,7 @@ class SignupContainer extends Component {
           />
           <label>Seeking</label>
           <Form.Dropdown
-            onChange={this.props.handleDropdown}
+            onChange={this.handleDropdown}
             placeholder="Seeking"
             name="gender_choice"
             fluid
@@ -83,7 +116,7 @@ class SignupContainer extends Component {
           />
 
           <Form.Dropdown
-            onChange={this.props.handleDropdown}
+            onChange={this.handleDropdown}
             placeholder="Interests"
             name="interests"
             fluid
