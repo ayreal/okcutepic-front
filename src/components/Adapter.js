@@ -7,7 +7,7 @@ const headers = {
 };
 
 export function fetchUser(data) {
-  return fetch(`{TEST_ROUTE}` / auth, {
+  return fetch(`${TEST_ROUTE}/auth`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(data)

@@ -14,13 +14,14 @@ import {
 class LoginContainer extends Component {
   state = {
     fields: {
-      username: "",
-      password: ""
+      username: "user2",
+      password: "abc"
     }
   };
   handleLogin = event => {
     event.preventDefault();
     console.log("submitted");
+    console.log(this.state.fields);
     fetchUser(this.state.fields);
   };
 
