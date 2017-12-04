@@ -14,10 +14,17 @@ export function fetchUser(data) {
   }).then(res => res.json());
 }
 
+export function fetchCurrentUser() {
+  const token = localStorage.getItem("token");
+  return fetch(`${TEST_ROUTE}/current_user`, {
+    headers: { Authorization: token }
+  }).then(res => res.json());
+}
+
 export function fetchUsers() {
-  return fetch(`${ROUTE}/users`).then(res => res.json());
+  return fetch(`${TEST_ROUTE}/users`).then(res => res.json());
 }
 
 export function fetchInterests() {
-  return fetch(`${ROUTE}/interests`).then(res => res.json());
+  return fetch(`${TEST_ROUTE}/interests`).then(res => res.json());
 }
