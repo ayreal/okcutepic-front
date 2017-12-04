@@ -47,7 +47,6 @@ class MainContainer extends Component {
       <div>
         <AppHeader user={USER} />
         <FeaturesContainer user={USER} />
-        <SignupContainer />
       </div>
     );
   }

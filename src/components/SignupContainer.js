@@ -25,25 +25,23 @@ class SignupContainer extends Component {
     };
   }
 
-  handleSignUp = event => {
+  handleChange = event => {
     const { name, value } = event.target;
     this.setState({
-      ...this.state,
       newUser: { ...this.state.newUser, [name]: value }
     });
     console.log(this.state);
   };
 
-  handleSignUpDropdown = (event, data) => {
+  handleDropdown = (event, data) => {
     const { name, value } = data;
     this.setState({
-      ...this.state,
       newUser: { ...this.state.newUser, [name]: value }
     });
     console.log(this.state);
   };
 
-  signUpSubmit = () => {
+  handleSubmit = () => {
     const body = this.state.newUser;
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
