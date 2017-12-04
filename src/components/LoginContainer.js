@@ -10,6 +10,7 @@ import {
   Segment
 } from "semantic-ui-react";
 
+// remove hardcoding and add state to fields
 class LoginContainer extends Component {
   state = {
     error: false,
