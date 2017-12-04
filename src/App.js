@@ -15,17 +15,20 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      fetchCurrentUser().then(data => console.log(data));
-    }
-  }
+  // AH - IN PROGRESS
+  // componentDidMount() {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     fetchCurrentUser().then(data => console.log(data));
+  //   }
+  // }
 
   handleLogin = user => {
     const currentUser = { user: user };
     this.setState({ auth: currentUser });
-    localStorage.setItem("token", user.id);
+
+    // AH - In progress
+    //localStorage.setItem("token", user.id);
   };
 
   handleLogout = () => {

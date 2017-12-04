@@ -26,5 +26,5 @@ export function fetchUsers() {
 }
 
 export function fetchInterests() {
-  return fetch(`${TEST_ROUTE}/interests`).then(res => res.json());
+  return fetch(`${ROUTE}/interests`).then(res => res.json());
 }
