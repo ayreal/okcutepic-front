@@ -28,3 +28,11 @@ export function fetchUsers() {
 export function fetchInterests() {
   return fetch(`${ROUTE}/interests`).then(res => res.json());
 }
+
+export function createLike(data) {
+  fetch(`${TEST_ROUTE}/matches`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json());
+}
