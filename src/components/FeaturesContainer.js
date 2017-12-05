@@ -31,9 +31,9 @@ class FeaturesContainer extends Component {
   };
 
   getGenderIcon = gender => {
-    if (gender === 1) {
+    if (gender === 0) {
       return "man";
-    } else if (gender === 2) {
+    } else if (gender === 1) {
       return "woman";
     } else {
       return "question";
