@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Button, Form, Card, Select, Container } from "semantic-ui-react";
 import { fetchInterests } from "./Adapter.js";
 import { Link } from "react-router-dom";
+import AvatarOptions from "../Avatar.js";
+import { postUser } from "./Adapter.js";
 
 const genderOptions = [
   { value: 0, text: "Male" },
@@ -55,25 +57,9 @@ class SignupContainer extends Component {
   };
 
   handleSubmit = () => {
-    const body = this.state.newUser;
-    const body2 = this.state.newUser.interests;
-    fetch("https://okcutepic-back.herokuapp.com/api/v1/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(res => console.log(res));
-
-    fetch("https://okcutepic-back.herokuapp.com/api/v1/interests", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(body2)
-    }).then(res => console.log(res));
+    const body = { user: this.state.newUser };
+    console.log(body);
+    postUser(body);
   };
 
   handleAddition = (e, { value }) => {
@@ -102,7 +88,7 @@ class SignupContainer extends Component {
 
             <Form.Field>
               <label>Password</label>
-              <input placeholder="Password" name="password" />
+              <input placeholder="Password" name="password" type="password" />
             </Form.Field>
 
             <Form.Field>
@@ -120,7 +106,14 @@ class SignupContainer extends Component {
               <label>Photo URL</label>
               <input placeholder="Photo" name="photo" />
             </Form.Field>
-
+            <Form.Field
+              onChange={this.handleDropdown}
+              control={Select}
+              label="Avatar"
+              name="avatar"
+              options={AvatarOptions}
+              placeholder="Avatar"
+            />
             <Form.Field
               onChange={this.handleDropdown}
               control={Select}

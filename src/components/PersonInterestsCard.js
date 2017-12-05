@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Icon, Button } from "semantic-ui-react";
+import { Card, Icon, Button, Image } from "semantic-ui-react";
 
 // need a function to check if user is already liked
 const PersonInterestCard = props => {
@@ -14,6 +14,7 @@ const PersonInterestCard = props => {
 
   return (
     <Card>
+      <Image src={props.data.avatar} />
       <Card.Content>
         <Icon size="large" name={props.getGenderIcon(props.data.gender)} />
         <Card.Header>

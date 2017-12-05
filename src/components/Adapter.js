@@ -36,3 +36,13 @@ export function createLike(data) {
     body: JSON.stringify(data)
   }).then(res => res.json());
 }
+
+export function postUser(body) {
+  fetch(`${TEST_ROUTE}/users`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(body)
+  })
+    .then(res => res.json())
+    .then(res => console.log(res));
+}
