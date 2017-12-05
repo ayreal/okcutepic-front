@@ -14,6 +14,11 @@ class FeaturesContainer extends Component {
   };
 
   componentDidMount() {
+    console.log(
+      "Inside FeaturesContainer, this.props.user is:",
+      this.props.user
+    );
+
     fetchUsers().then(res => this.setState({ users: res }));
     fetchInterests().then(res => this.setState({ interests: res }));
   }

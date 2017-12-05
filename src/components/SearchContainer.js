@@ -34,7 +34,8 @@ class SearchContainer extends Component {
   handleInterest = () => {};
 
   render() {
-    console.log("SearchContainer.props.users is:", this.props.users);
+    console.log("SearchContainer.props.USER is:", this.props.user);
+    console.log("SearchContainer.props.USERS is:", this.props.users);
     return (
       <div>
         <h2>Search</h2>
