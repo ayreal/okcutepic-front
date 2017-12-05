@@ -7,23 +7,34 @@ import SearchFilter from "./SearchFilter";
 class SearchContainer extends Component {
   state = {
     isMatchOnly: false,
-    filterOptions: []
+    searchTerm: ""
   };
+
   cards = () => {
     return this.props.users.map(user => {
-      return (
-        <PersonInterestsCard
-          key={user.id}
-          data={user}
-          getGenderIcon={this.props.getGenderIcon}
-        />
-      );
+      const userI = user.interests
+        .map(interest => {
+          return interest.name;
+        })
+        .join(",");
+
+      console.log(userI);
+      if (userI.includes(this.state.searchTerm.toLowerCase())) {
+        return (
+          <PersonInterestsCard
+            key={user.id}
+            data={user}
+            getGenderIcon={this.props.getGenderIcon}
+          />
+        );
+      }
     });
   };
 
-  setInterestsFilter = event => {
-    debugger;
-  };
+  //
+  // setInterestsFilter = event => {
+  //   debugger;
+  // };
 
   toggleMatchOnly = () => {
     this.setState({
@@ -31,7 +42,16 @@ class SearchContainer extends Component {
     });
   };
 
-  handleInterest = () => {};
+  handleChange = event => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
+  // filteredCards = () => {
+  //   debugger;
+  //   this.props.interests.filter(interest => {
+  //     return interest.name.toLowerCase() === this.state.searchTerm;
+  //   });
+  // };
 
   render() {
     console.log("SearchContainer.props.USER is:", this.props.user);
@@ -41,9 +61,11 @@ class SearchContainer extends Component {
         <h2>Search</h2>
         <SearchFilter
           interests={this.props.interests}
+          handleChange={this.handleChange}
           handleDropdown={this.setInterestsFilter}
           handleCheckbox={this.toggleMatchOnly}
           isChecked={this.state.isMatchOnly}
+          searchTerm={this.state.searchTerm}
         />
         <Card.Group>{this.cards()}</Card.Group>
       </div>

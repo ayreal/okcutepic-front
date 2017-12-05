@@ -7,7 +7,8 @@ import {
   Button,
   Checkbox,
   Header,
-  Icon
+  Icon,
+  Input
 } from "semantic-ui-react";
 
 let options = [];
@@ -36,15 +37,9 @@ class SearchFilter extends Component {
           <Header.Content>Search Users By Interest</Header.Content>
         </Header>
         <Form onSubmit={this.handleSubmit}>
-          <Dropdown
-            placeholder="Interests"
-            fluid
-            search
-            multiple
-            selection
-            closeOnChange
-            onChange={this.props.handleDropdown}
-            options={options}
+          <Input
+            onChange={this.props.handleChange}
+            value={this.props.searchTerm}
           />
           <Checkbox
             label="Shared Interests Only"
