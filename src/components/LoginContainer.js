@@ -20,7 +20,6 @@ class LoginContainer extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submitted");
     fetchUser(this.state.fields).then(user => {
       if (user.error) {
         this.setState({ error: true });

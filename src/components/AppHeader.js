@@ -7,7 +7,7 @@ const AppHeader = props => {
     if (props.user.id) {
       return <Menu.Item as="h3">Welcome, {props.user.name}!</Menu.Item>;
     } else {
-      null;
+      return null;
     }
   };
 
@@ -20,8 +20,8 @@ const AppHeader = props => {
       );
     } else {
       return (
-        <Button default circular={true} as={Link} to="/signup">
-          Sign Up
+        <Button default circular={true} as={Link} to="/">
+          Login
         </Button>
       );
     }
