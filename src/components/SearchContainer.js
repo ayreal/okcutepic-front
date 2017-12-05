@@ -11,6 +11,14 @@ class SearchContainer extends Component {
   };
 
   cards = () => {
+    if (!this.state.isMatchOnly) {
+      return this.searchInterests();
+    } else {
+      return this.renderCheckboxFilteredUsers();
+    }
+  };
+
+  searchInterests = () => {
     return this.props.users.map(user => {
       const userI = user.interests
         .map(interest => {
@@ -31,10 +39,35 @@ class SearchContainer extends Component {
     });
   };
 
-  //
-  // setInterestsFilter = event => {
-  //   debugger;
-  // };
+  // For each one of the signed in User's interests, look through all users and return all users who share an interest
+  checkboxFilteredUsers = () => {
+    let filtered = [];
+    const user = this.props.user;
+    const users = this.props.users;
+    user.interests.forEach(interest => {
+      users.forEach(user => {
+        user.interests.forEach(userInterest => {
+          if (userInterest.id === interest.id) {
+            filtered.push(user);
+          }
+        });
+      });
+    });
+    return filtered;
+  };
+
+  renderCheckboxFilteredUsers = () => {
+    const users = this.checkboxFilteredUsers();
+    return users.map(user => {
+      return (
+        <PersonInterestsCard
+          key={user.id}
+          data={user}
+          getGenderIcon={this.props.getGenderIcon}
+        />
+      );
+    });
+  };
 
   toggleMatchOnly = () => {
     this.setState({
@@ -46,13 +79,6 @@ class SearchContainer extends Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  // filteredCards = () => {
-  //   debugger;
-  //   this.props.interests.filter(interest => {
-  //     return interest.name.toLowerCase() === this.state.searchTerm;
-  //   });
-  // };
-
   render() {
     console.log("SearchContainer.props.USER is:", this.props.user);
     console.log("SearchContainer.props.USERS is:", this.props.users);
@@ -62,7 +88,7 @@ class SearchContainer extends Component {
         <SearchFilter
           interests={this.props.interests}
           handleChange={this.handleChange}
-          handleDropdown={this.setInterestsFilter}
+          //handleDropdown={this.setInterestsFilter}
           handleCheckbox={this.toggleMatchOnly}
           isChecked={this.state.isMatchOnly}
           searchTerm={this.state.searchTerm}
