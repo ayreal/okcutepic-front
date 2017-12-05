@@ -7,7 +7,7 @@ const headers = {
 };
 
 export function fetchUser(data) {
-  return fetch(`${TEST_ROUTE}/auth`, {
+  return fetch(`${ROUTE}/auth`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(data)
@@ -16,7 +16,7 @@ export function fetchUser(data) {
 
 export function fetchCurrentUser() {
   const token = localStorage.getItem("token");
-  return fetch(`${TEST_ROUTE}/current_user`, {
+  return fetch(`${ROUTE}/current_user`, {
     headers: { Authorization: token }
   }).then(res => res.json());
 }
@@ -38,7 +38,7 @@ export function createLike(data) {
 }
 
 export function postUser(body) {
-  fetch(`${TEST_ROUTE}/users`, {
+  fetch(`${ROUTE}/users`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(body)

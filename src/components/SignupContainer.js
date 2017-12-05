@@ -56,10 +56,12 @@ class SignupContainer extends Component {
     console.log(this.state);
   };
 
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault();
     const body = { user: this.state.newUser };
     console.log(body);
     postUser(body);
+    this.props.history.push("/");
   };
 
   handleAddition = (e, { value }) => {
