@@ -141,7 +141,6 @@ class SignupContainer extends Component {
             <label>Interests</label>
             <Form.Dropdown
               onChange={this.handleDropdown}
-              icon="caret down"
               placeholder="Interests"
               name="interests"
               fluid
