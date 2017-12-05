@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, Card, Select, Container } from "semantic-ui-react";
 import { fetchInterests } from "./Adapter.js";
 import { Link } from "react-router-dom";
+import AvatarOptions from "../Avatar.js";
 
 const genderOptions = [
   { value: 0, text: "Male" },
@@ -120,7 +121,14 @@ class SignupContainer extends Component {
               <label>Photo URL</label>
               <input placeholder="Photo" name="photo" />
             </Form.Field>
-
+            <Form.Field
+              onChange={this.handleDropdown}
+              control={Select}
+              label="Avatar"
+              name="avatar"
+              options={AvatarOptions}
+              placeholder="Avatar"
+            />
             <Form.Field
               onChange={this.handleDropdown}
               control={Select}
