@@ -1,15 +1,34 @@
 import React from "react";
 import { Container, Menu, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const AppHeader = props => {
   const renderWelcome = () => {
     if (props.user.id) {
       return <Menu.Item as="h3">Welcome, {props.user.name}!</Menu.Item>;
     } else {
-      null;
+      return null;
     }
   };
+
+  // const AuthButton = withRouter(
+  //   ({ history }) =>
+  //     props.user.id ? (
+  //       <Button
+  //         default
+  //         circular={true}
+  //         onClick={() => {
+  //           props.handleLogout(() => history.push("/"));
+  //         }}
+  //       >
+  //         Sign out
+  //       </Button>
+  //     ) : (
+  //       <Button default circular={true} as={Link} to="/">
+  //         Login
+  //       </Button>
+  //     )
+  // );
 
   const renderButton = () => {
     if (props.user.id) {
@@ -20,8 +39,8 @@ const AppHeader = props => {
       );
     } else {
       return (
-        <Button default circular={true} as={Link} to="/signup">
-          Sign Up
+        <Button default circular={true} as={Link} to="/">
+          Login
         </Button>
       );
     }

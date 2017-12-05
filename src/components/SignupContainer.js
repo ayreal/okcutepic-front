@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, Card, Select, Container } from "semantic-ui-react";
 import { fetchInterests } from "./Adapter.js";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const genderOptions = [
   { value: 0, text: "Male" },
@@ -132,6 +132,7 @@ class SignupContainer extends Component {
             <label>Seeking</label>
             <Form.Dropdown
               onChange={this.handleDropdown}
+              icon="close"
               placeholder="Seeking"
               name="gender_choice"
               fluid
@@ -145,6 +146,7 @@ class SignupContainer extends Component {
             <label>Interests</label>
             <Form.Dropdown
               onChange={this.handleDropdown}
+              icon="caret down"
               placeholder="Interests"
               name="interests"
               fluid

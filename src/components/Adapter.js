@@ -1,4 +1,3 @@
-import React from "react";
 const ROUTE = "https://okcutepic-back.herokuapp.com/api/v1";
 const TEST_ROUTE = "http://localhost:3001/api/v1";
 
@@ -23,7 +22,7 @@ export function fetchCurrentUser() {
 }
 
 export function fetchUsers() {
-  return fetch(`${TEST_ROUTE}/users`).then(res => res.json());
+  return fetch(`${ROUTE}/users`).then(res => res.json());
 }
 
 export function fetchInterests() {
