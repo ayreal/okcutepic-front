@@ -3,7 +3,7 @@ import { Button, Form, Card, Select, Container } from "semantic-ui-react";
 import { fetchInterests } from "./Adapter.js";
 import { Link } from "react-router-dom";
 import AvatarOptions from "../Avatar.js";
-import { postUser, postInterest } from "./Adapter.js";
+import { postUser } from "./Adapter.js";
 
 const genderOptions = [
   { value: 0, text: "Male" },
@@ -57,11 +57,9 @@ class SignupContainer extends Component {
   };
 
   handleSubmit = () => {
-    const body = this.state.newUser;
-    const body2 = this.state.newUser.interests;
-
+    const body = { user: this.state.newUser };
+    console.log(body);
     postUser(body);
-    postInterest(body2);
   };
 
   handleAddition = (e, { value }) => {
@@ -90,7 +88,7 @@ class SignupContainer extends Component {
 
             <Form.Field>
               <label>Password</label>
-              <input placeholder="Password" name="password" />
+              <input placeholder="Password" name="password" type="password" />
             </Form.Field>
 
             <Form.Field>

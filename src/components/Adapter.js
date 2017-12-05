@@ -42,13 +42,7 @@ export function postUser(body) {
     method: "POST",
     headers: headers,
     body: JSON.stringify(body)
-  }).then(res => console.log(res));
-}
-
-export function postInterest(body) {
-  fetch(`${TEST_ROUTE}/interests`, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(body)
-  }).then(res => console.log(res));
+  })
+    .then(res => res.json())
+    .then(res => console.log(res));
 }
