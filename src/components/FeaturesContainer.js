@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchContainer from "./SearchContainer";
 import SwipeContainer from "./SwipeContainer";
 import MatchesContainer from "./MatchesContainer";
-import { fetchUsers, fetchInterests } from "./Adapter";
+import { fetchUsers, fetchInterests, createLike } from "./Adapter";
 import { Tab, Container } from "semantic-ui-react";
 
 // https://github.com/Semantic-Org/Semantic-UI-React/issues/1859
@@ -14,7 +14,6 @@ class FeaturesContainer extends Component {
   };
 
   componentDidMount() {
-    console.log("here");
     fetchUsers().then(res => this.setState({ users: res }));
     fetchInterests().then(res => this.setState({ interests: res }));
   }
@@ -27,7 +26,8 @@ class FeaturesContainer extends Component {
 
   handleLike = data => {
     // make a post with that user's data to the rails api to create a like
-    debugger;
+    const newData = { ...data, currentUserId: this.props.user.id };
+    createLike(newData);
   };
 
   getGenderIcon = gender => {
@@ -41,8 +41,6 @@ class FeaturesContainer extends Component {
   };
 
   render() {
-    console.log("featurescontainer user is", this.props.user);
-
     const panes = [
       {
         menuItem: "Search",
