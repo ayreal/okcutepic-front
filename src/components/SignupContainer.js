@@ -3,6 +3,7 @@ import { Button, Form, Card, Select, Container } from "semantic-ui-react";
 import { fetchInterests } from "./Adapter.js";
 import { Link } from "react-router-dom";
 import AvatarOptions from "../Avatar.js";
+import { postUser, postInterest } from "./Adapter.js";
 
 const genderOptions = [
   { value: 0, text: "Male" },
@@ -58,23 +59,9 @@ class SignupContainer extends Component {
   handleSubmit = () => {
     const body = this.state.newUser;
     const body2 = this.state.newUser.interests;
-    fetch("https://okcutepic-back.herokuapp.com/api/v1/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(res => console.log(res));
 
-    fetch("https://okcutepic-back.herokuapp.com/api/v1/interests", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(body2)
-    }).then(res => console.log(res));
+    postUser(body);
+    postInterest(body2);
   };
 
   handleAddition = (e, { value }) => {
