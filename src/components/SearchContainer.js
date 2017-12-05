@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Card } from "semantic-ui-react";
 import PersonInterestsCard from "./PersonInterestsCard";
 import SearchFilter from "./SearchFilter";
+import { createLike } from "./Adapter";
 
 class SearchContainer extends Component {
   state = {
@@ -33,6 +34,7 @@ class SearchContainer extends Component {
             key={user.id}
             data={user}
             getGenderIcon={this.props.getGenderIcon}
+            handleUserLike={this.handleUserLike}
           />
         );
       }
@@ -64,6 +66,7 @@ class SearchContainer extends Component {
           key={user.id}
           data={user}
           getGenderIcon={this.props.getGenderIcon}
+          handleUserLike={this.handleUserLike}
         />
       );
     });
@@ -77,6 +80,13 @@ class SearchContainer extends Component {
 
   handleChange = event => {
     this.setState({ searchTerm: event.target.value });
+  };
+
+  handleUserLike = data => {
+    const userId = this.props.user.id;
+    data = { ...data, currentUserId: userId };
+    //debugger;
+    createLike(data);
   };
 
   render() {

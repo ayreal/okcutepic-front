@@ -12,6 +12,10 @@ const PersonInterestCard = props => {
     return interests.join(", ");
   };
 
+  const handleLike = () => {
+    props.handleUserLike(props.data);
+  };
+
   return (
     <Card>
       <Image src={props.data.avatar} />
@@ -28,6 +32,7 @@ const PersonInterestCard = props => {
       </Card.Content>
       <Card.Content extra>
         <Button
+          onClick={handleLike}
           content="Like"
           icon="heart"
           color="purple"

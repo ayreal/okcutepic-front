@@ -34,7 +34,9 @@ export function createLike(data) {
     method: "POST",
     headers: headers,
     body: JSON.stringify(data)
-  }).then(res => res.json());
+  })
+    .then(res => res.json())
+    .then(res => console.log(res));
 }
 
 export function postUser(body) {
