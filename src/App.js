@@ -3,7 +3,7 @@ import AppHeader from "./components/AppHeader";
 import LoginContainer from "./components/LoginContainer";
 import SignupContainer from "./components/SignupContainer";
 import MainContainer from "./components/MainContainer";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { fetchCurrentUser } from "./components/Adapter";
 import "./App.css";
 
@@ -33,7 +33,7 @@ class App extends Component {
   handleLogout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
-    //this.props.history.push("/");
+    //history.push("/");
   };
 
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Menu, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const AppHeader = props => {
   const renderWelcome = () => {
@@ -10,6 +10,25 @@ const AppHeader = props => {
       return null;
     }
   };
+
+  // const AuthButton = withRouter(
+  //   ({ history }) =>
+  //     props.user.id ? (
+  //       <Button
+  //         default
+  //         circular={true}
+  //         onClick={() => {
+  //           props.handleLogout(() => history.push("/"));
+  //         }}
+  //       >
+  //         Sign out
+  //       </Button>
+  //     ) : (
+  //       <Button default circular={true} as={Link} to="/">
+  //         Login
+  //       </Button>
+  //     )
+  // );
 
   const renderButton = () => {
     if (props.user.id) {
