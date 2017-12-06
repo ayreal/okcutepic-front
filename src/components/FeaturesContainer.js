@@ -24,9 +24,16 @@ class FeaturesContainer extends Component {
   }
 
   genderFilteredUsers = () => {
-    return this.state.users.filter(
-      user => user.gender === this.props.user.gender_choice
-    );
+    if (
+      this.props.user.gender_choice === 0 ||
+      this.props.user.gender_choice === 1
+    ) {
+      return this.state.users.filter(
+        user => user.gender === this.props.user.gender_choice
+      );
+    } else {
+      return this.state.users;
+    }
   };
 
   handleLike = data => {
