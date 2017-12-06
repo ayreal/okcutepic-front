@@ -21,6 +21,7 @@ class LoginContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     fetchUser(this.state.fields).then(user => {
+      // continue with AUTH
       if (user.error) {
         this.setState({ error: true });
       } else {

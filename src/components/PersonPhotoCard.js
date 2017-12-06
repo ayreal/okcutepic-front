@@ -45,9 +45,7 @@ const PersonPhotoCard = props => {
 };
 
 PersonPhotoCard.propTypes = {
-  data: PropTypes.object.isRequired,
-  handleLike: PropTypes.func.isRequired,
-  nextPerson: PropTypes.func.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default PersonPhotoCard;

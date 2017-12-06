@@ -23,11 +23,6 @@ class SearchFilter extends Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    debugger;
-  };
-
   render() {
     this.makeInterestOptions();
     return (

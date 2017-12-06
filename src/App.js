@@ -18,6 +18,7 @@ class App extends Component {
     const token = localStorage.getItem("token");
     if (token) {
       fetchCurrentUser().then(data => {
+        // continue with AUTH
         const currentUser = { user: data };
         this.setState({ auth: currentUser });
       });
