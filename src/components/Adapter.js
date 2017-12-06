@@ -1,5 +1,5 @@
 const ROUTE = "https://okcutepic-back.herokuapp.com/api/v1";
-//const TEST_ROUTE = "http://localhost:3001/api/v1";
+const TEST_ROUTE = "http://localhost:3001/api/v1";
 
 // ADD TO HEADERS   "Authorization": "Token ----------"
 const headers = {
@@ -7,8 +7,9 @@ const headers = {
   "Content-Type": "application/json"
 };
 
+// AUTHENTICATION
 export function fetchUser(data) {
-  return fetch(`${ROUTE}/auth`, {
+  return fetch(`${TEST_ROUTE}/auth`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(data)
@@ -16,11 +17,14 @@ export function fetchUser(data) {
 }
 
 export function fetchCurrentUser() {
+  //debugger;
   const token = localStorage.getItem("token");
-  return fetch(`${ROUTE}/current_user`, {
+  return fetch(`${TEST_ROUTE}/current_user`, {
     headers: { Authorization: token }
   }).then(res => res.json());
 }
+
+//
 
 export function fetchUsers() {
   return fetch(`${ROUTE}/users`).then(res => res.json());

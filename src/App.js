@@ -13,22 +13,22 @@ class App extends Component {
       user: {}
     }
   };
-
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      fetchCurrentUser().then(data => {
-        // continue with AUTH
-        const currentUser = { user: data };
-        this.setState({ auth: currentUser });
-      });
-    }
-  }
+  //
+  // componentDidMount() {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     fetchCurrentUser().then(data => {
+  //       // continue with AUTH
+  //       const currentUser = { user: data };
+  //       this.setState({ auth: currentUser });
+  //     });
+  //   }
+  // }
 
   handleLogin = user => {
     const currentUser = { user: user };
     this.setState({ auth: currentUser });
-    localStorage.setItem("token", user.id);
+    localStorage.setItem("token", user.token);
   };
 
   handleLogout = () => {
