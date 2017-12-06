@@ -39,7 +39,7 @@ class SwipeContainer extends Component {
         <h2>Swipe</h2>
         <PersonPhotoCard
           data={this.state.currentPerson}
-          handleLike={this.props.handleLike}
+          handleUserLike={this.props.handleUserLike}
           nextPerson={this.setCurrentPerson}
           getGenderIcon={this.props.getGenderIcon}
         />

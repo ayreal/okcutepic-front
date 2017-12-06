@@ -5,8 +5,9 @@ import PropTypes from "prop-types";
 const PersonPhotoCard = props => {
   console.log(props);
 
-  function handleLikeUser() {
-    props.handleLike(props.data);
+  function handleHeart() {
+    props.handleUserLike(props.data);
+    props.nextPerson();
   }
 
   // clicking a heart will send a post request to create a like --> this comes down from params of the USER
@@ -35,7 +36,7 @@ const PersonPhotoCard = props => {
             name="heart"
             size="huge"
             circular="true"
-            onClick={handleLikeUser}
+            onClick={handleHeart}
           />
         </a>
       </Card.Content>

@@ -36,10 +36,11 @@ class FeaturesContainer extends Component {
     }
   };
 
-  handleLike = data => {
-    // make a post with that user's data to the rails api to create a like
-    const newData = { ...data, currentUserId: this.props.user.id };
-    createLike(newData);
+  handleUserLike = data => {
+    const userId = this.props.user.id;
+    data = { ...data, currentUserId: userId };
+    //debugger;
+    createLike(data);
   };
 
   getGenderIcon = gender => {
@@ -63,6 +64,7 @@ class FeaturesContainer extends Component {
               users={this.genderFilteredUsers()}
               interests={this.state.interests}
               getGenderIcon={this.getGenderIcon}
+              handleUserLike={this.handleUserLike}
             />
           </Tab.Pane>
         )
@@ -74,7 +76,7 @@ class FeaturesContainer extends Component {
             <SwipeContainer
               user={this.props.user}
               users={this.genderFilteredUsers()}
-              handleLike={this.handleLike}
+              handleUserLike={this.handleUserLike}
               getGenderIcon={this.getGenderIcon}
             />
           </Tab.Pane>

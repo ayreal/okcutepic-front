@@ -34,7 +34,7 @@ class SearchContainer extends Component {
             key={user.id}
             data={user}
             getGenderIcon={this.props.getGenderIcon}
-            handleUserLike={this.handleUserLike}
+            handleUserLike={this.props.handleUserLike}
           />
         );
       }
@@ -66,7 +66,7 @@ class SearchContainer extends Component {
           key={user.id}
           data={user}
           getGenderIcon={this.props.getGenderIcon}
-          handleUserLike={this.handleUserLike}
+          handleUserLike={this.props.handleUserLike}
         />
       );
     });
@@ -82,12 +82,12 @@ class SearchContainer extends Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  handleUserLike = data => {
-    const userId = this.props.user.id;
-    data = { ...data, currentUserId: userId };
-    //debugger;
-    createLike(data);
-  };
+  // handleUserLike = data => {
+  //   const userId = this.props.user.id;
+  //   data = { ...data, currentUserId: userId };
+  //   //debugger;
+  //   createLike(data);
+  // };
 
   render() {
     console.log("SearchContainer.props.USER is:", this.props.user);
