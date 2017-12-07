@@ -25,7 +25,7 @@ class LoginContainer extends Component {
       if (user.error) {
         this.setState({ error: true });
       } else {
-        debugger;
+        // debugger;
         this.props.handleLogin(user);
         this.props.history.push("/welcome");
       }

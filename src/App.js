@@ -8,26 +8,19 @@ import { fetchCurrentUser } from "./components/Adapter";
 import "./App.css";
 
 class App extends Component {
-  state = {
-    auth: {
-      user: {}
-    }
-  };
-  //
-  // componentDidMount() {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     fetchCurrentUser().then(data => {
-  //       // continue with AUTH
-  //       const currentUser = { user: data };
-  //       this.setState({ auth: currentUser });
-  //     });
-  //   }
-  // }
+  constructor() {
+    super();
+    this.state = {
+      auth: {
+        user: {}
+      }
+    };
+  }
 
   handleLogin = user => {
-    const currentUser = { user: user };
-    this.setState({ auth: currentUser });
+    // debugger;
+    // const auth = this.state.auth
+    this.setState({ auth: { ...this.state.auth, user: user.currentUser } });
     localStorage.setItem("token", user.token);
   };
 
@@ -51,7 +44,13 @@ class App extends Component {
         />
         <Route
           path="/welcome"
-          render={() => <MainContainer user={auth.user} />}
+          render={props => (
+            <MainContainer
+              {...props}
+              user={auth.user}
+              handleLogin={this.handleLogin}
+            />
+          )}
         />
         <Route path="/signup" component={SignupContainer} />
       </div>
