@@ -10,7 +10,8 @@ import { Tab, Container } from "semantic-ui-react";
 class FeaturesContainer extends Component {
   state = {
     users: [],
-    interests: []
+    interests: [],
+    rejects: []
   };
 
   componentDidMount() {
@@ -76,6 +77,7 @@ class FeaturesContainer extends Component {
             <SwipeContainer
               user={this.props.user}
               users={this.genderFilteredUsers()}
+              rejects={this.state.rejects}
               handleUserLike={this.handleUserLike}
               getGenderIcon={this.getGenderIcon}
             />

@@ -17,27 +17,26 @@ class SignupContainer extends Component {
 
     this.state = {
       newUser: {},
-      interests: []
+      options: []
     };
   }
 
   componentDidMount() {
-    fetchInterests().then(json =>
-      this.setState({
-        interests: json
-      })
-    );
+    fetchInterests().then(json => this.saveInterests(json));
   }
 
-  saveInterests = () => {
-    let options = this.state.interests.map(interest => {
+  saveInterests = json => {
+    debugger;
+    let options = json.map(interest => {
       var obj = { ...interest };
       obj.key = interest.name;
       obj.text = interest.name;
       obj.value = interest.name;
       return obj;
     });
-    return options;
+    this.setState({
+      options: options
+    });
   };
 
   handleChange = event => {
@@ -66,6 +65,9 @@ class SignupContainer extends Component {
 
   handleAddition = (e, { value }) => {
     console.log("here");
+    this.setState({
+      options: [{ text: value, value }, ...this.state.options]
+    });
   };
 
   render() {
@@ -150,7 +152,7 @@ class SignupContainer extends Component {
               allowAdditions
               closeOnChange
               onAddItem={this.handleAddition}
-              options={this.saveInterests()}
+              options={this.state.options}
             />
 
             <Button type="submit">Submit</Button>
