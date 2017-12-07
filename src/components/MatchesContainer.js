@@ -33,7 +33,7 @@ class MatchesContainer extends Component {
   render() {
     return (
       <div>
-        <h2>MatchesContainer</h2>
+        <h2>Match</h2>
         {this.matches()}
       </div>
     );
