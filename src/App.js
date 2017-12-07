@@ -33,15 +33,7 @@ class App extends Component {
     // const interests = user.currentUser.interests;
     console.log("user API response in handleLogin:", user);
 
-    this.setState({
-      auth: {
-        ...this.state.auth,
-        user: {
-          ...user.currentUser,
-          interests: user.currentUser.interests
-        }
-      }
-    });
+    this.setState({ auth: { ...this.state.auth, user: user.currentUser } });
     localStorage.setItem("token", user.token);
     console.log("state in handleLogin", this.state);
   };
@@ -49,7 +41,7 @@ class App extends Component {
   handleLogout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
-    //history.push("/");
+    // this.context.history.push("/");
   };
 
   render() {
