@@ -26,10 +26,22 @@ class SwipeContainer extends Component {
   };
 
   setCurrentPerson = () => {
-    const person = this.getRandomPerson();
-    this.setState({
-      currentPerson: person
-    });
+    if (!this.state.currentPerson.id) {
+      const person = this.getRandomPerson();
+      this.setState({
+        currentPerson: person
+      });
+    } else {
+      const person = this.getRandomPerson();
+      const index = this.props.users.indexOf(this.state.currentPerson);
+      if (index !== -1) {
+        this.props.users.splice(index, 1);
+      }
+      let users = this.props.users;
+      this.setState({
+        currentPerson: person
+      });
+    }
   };
 
   render() {
