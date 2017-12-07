@@ -21,16 +21,20 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
+      // debugger;
       fetchCurrentUser().then(user => {
         this.handleLogin(user);
       });
+    } else {
+      return null;
     }
   }
 
   handleLogin = user => {
+    //console.log("NOW there are INTERESTS FOR THE USER"), user.interests)
+    // ONCE YOU HAVE A TOKEN, THERE ARE INTERESTS -- THIS SHOULD HAPPEN EARLIER
+    let interests = user.interests;
     // debugger;
-    // const auth = this.state.auth
-    // user.currentUser.interests = "cats";
     // const interests = user.currentUser.interests;
     console.log("user API response in handleLogin:", user);
 
