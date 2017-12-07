@@ -30,7 +30,6 @@ class App extends Component {
     // debugger;
     // const auth = this.state.auth
     // user.currentUser.interests = "cats";
-    debugger;
     // const interests = user.currentUser.interests;
     console.log("user API response in handleLogin:", user);
 
