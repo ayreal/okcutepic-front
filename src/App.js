@@ -12,6 +12,7 @@ class App extends Component {
     super();
     this.state = {
       auth: {
+        isLoggedIn: false,
         user: {}
       }
     };
@@ -33,42 +34,46 @@ class App extends Component {
     // const interests = user.currentUser.interests;
     console.log("user API response in handleLogin:", user);
 
-    this.setState({ auth: { ...this.state.auth, user: user.currentUser } });
+    this.setState({
+      auth: { ...this.state.auth, user: user.currentUser, isLoggedIn: true }
+    });
     localStorage.setItem("token", user.token);
     console.log("state in handleLogin", this.state);
   };
 
   handleLogout = () => {
     localStorage.removeItem("token");
-    this.setState({ auth: { user: {} } });
+    this.setState({ auth: { user: {}, isLoggedIn: false } });
     // this.context.history.push("/");
   };
 
   render() {
-    console.log("inside app, this.state", this.state);
-    // console.log("inside app, USER.INTERESTS", this.state.auth.user.interests);
-
     const { auth } = this.state;
     return (
       <div className="App">
         <AppHeader user={auth.user} handleLogout={this.handleLogout} />
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <LoginContainer {...props} handleLogin={this.handleLogin} />
-          )}
-        />
-        <Route
-          path="/welcome"
-          render={props => (
-            <MainContainer
-              {...props}
-              user={auth.user}
-              handleLogin={this.handleLogin}
-            />
-          )}
-        />
+
+        {this.state.auth.isLoggedIn ? (
+          <Route
+            path="/welcome"
+            render={props => (
+              <MainContainer
+                {...props}
+                user={auth.user}
+                handleLogin={this.handleLogin}
+              />
+            )}
+          />
+        ) : (
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <LoginContainer {...props} handleLogin={this.handleLogin} />
+            )}
+          />
+        )}
+
         <Route path="/signup" component={SignupContainer} />
       </div>
     );
