@@ -31,7 +31,7 @@ class App extends Component {
     // const auth = this.state.auth
     // user.currentUser.interests = "cats";
     debugger;
-    const interests = user.currentUser.interests;
+    // const interests = user.currentUser.interests;
     console.log("user API response in handleLogin:", user);
 
     this.setState({
@@ -55,7 +55,7 @@ class App extends Component {
 
   render() {
     console.log("inside app, this.state", this.state);
-    console.log("inside app, USER.INTERESTS", this.state.auth.user.interests);
+    // console.log("inside app, USER.INTERESTS", this.state.auth.user.interests);
 
     const { auth } = this.state;
     return (
