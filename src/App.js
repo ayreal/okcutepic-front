@@ -29,8 +29,22 @@ class App extends Component {
   handleLogin = user => {
     // debugger;
     // const auth = this.state.auth
-    this.setState({ auth: { ...this.state.auth, user: user.currentUser } });
+    // user.currentUser.interests = "cats";
+    debugger;
+    const interests = user.currentUser.interests;
+    console.log("user API response in handleLogin:", user);
+
+    this.setState({
+      auth: {
+        ...this.state.auth,
+        user: {
+          ...user.currentUser,
+          interests: user.currentUser.interests
+        }
+      }
+    });
     localStorage.setItem("token", user.token);
+    console.log("state in handleLogin", this.state);
   };
 
   handleLogout = () => {
@@ -40,6 +54,9 @@ class App extends Component {
   };
 
   render() {
+    console.log("inside app, this.state", this.state);
+    console.log("inside app, USER.INTERESTS", this.state.auth.user.interests);
+
     const { auth } = this.state;
     return (
       <div className="App">
