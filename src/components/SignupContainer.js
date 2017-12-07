@@ -26,7 +26,6 @@ class SignupContainer extends Component {
   }
 
   saveInterests = json => {
-    debugger;
     let options = json.map(interest => {
       var obj = { ...interest };
       obj.key = interest.name;
