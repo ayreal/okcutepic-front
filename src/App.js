@@ -17,6 +17,15 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchCurrentUser().then(user => {
+        this.handleLogin(user);
+      });
+    }
+  }
+
   handleLogin = user => {
     // debugger;
     // const auth = this.state.auth
